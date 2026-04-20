@@ -2,6 +2,7 @@
 
 from typing import Dict, List, Optional
 from .entity import Entity
+import copy
 
 class World:
     """
@@ -28,6 +29,8 @@ class World:
         self.current_time: float = 0.0
         self.total_cost: float = 0.0
         
+        self.history = [] # Lista de copias del estado
+        self.current_snapshot_index = -1
         self._initialized = True
 
     def configure(self, width: int, height: int) -> None:
@@ -73,3 +76,23 @@ class World:
         self.entities.clear()
         self.current_time = 0.0
         self.total_cost = 0.0
+
+    def take_snapshot(self):
+        """Guarda una copia profunda del estado actual de todas las entidades."""
+        # Guardamos solo los datos relevantes para ahorrar memoria
+        snapshot = {
+            'time': self.current_time,
+            'entities': copy.deepcopy(self.entities),
+            'cost': self.total_cost
+        }
+        self.history.append(snapshot)
+        self.current_snapshot_index = len(self.history) - 1
+
+    def restore_snapshot(self, index):
+        """Carga un estado previo del historial."""
+        if 0 <= index < len(self.history):
+            snap = self.history[index]
+            self.entities = copy.deepcopy(snap['entities'])
+            self.current_time = snap['time']
+            self.total_cost = snap['cost']
+            self.current_snapshot_index = index

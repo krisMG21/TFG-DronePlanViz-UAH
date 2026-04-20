@@ -53,7 +53,8 @@ class Dispatcher:
         
         for action in self.action_queue:
             if action.completed:
-                continue
+                action.finish_func()
+                self.world.take_snapshot()      
                 
             # Si la acción aún no ha empezado, la ignoramos
             if current_t < action.t_start:
