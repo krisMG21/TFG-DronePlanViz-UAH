@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: droneplan_viz
+Version: 0.1.0
+Summary: Simulador visual y validador lógico para planificación automática con drones.
+Author-email: Tu Nombre <tu.email@universidad.edu>
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pygame>=2.5.0
+
+# TFG-DronePlanViz-UAH
+Librería de Python para la simulación gráfica y validación de planes en dominios de drones. Soporta PDDL y planificación jerárquica (HTN/JSHOP). Proyecto de Fin de Grado desarrollado en la Universidad de Alcalá.

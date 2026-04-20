@@ -1,0 +1,22 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "droneplan_viz"
+version = "0.1.0"
+description = "Simulador visual y validador lógico para planificación automática con drones."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Tu Nombre", email = "tu.email@universidad.edu"}
+]
+dependencies = [
+    "pygame>=2.5.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

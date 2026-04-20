@@ -1,0 +1,2 @@
+# MANIFEST.in
+recursive-include src/droneplan_viz/assets *.png
